@@ -2,10 +2,34 @@
 % Please edit documentation in R/RcppExports.R
 \name{cmsc}
 \alias{cmsc}
+\alias{cmsc_e1}
+\alias{cmsc_e2}
 \alias{gcsm}
 \title{Composite similarity between vectors}
 \usage{
 cmsc(
+  x,
+  y,
+  rescale = FALSE,
+  xmin = NA_real_,
+  xmax = NA_real_,
+  ymin = NA_real_,
+  ymax = NA_real_,
+  comp = "si"
+)
+
+cmsc_e1(
+  x,
+  y,
+  rescale = FALSE,
+  xmin = NA_real_,
+  xmax = NA_real_,
+  ymin = NA_real_,
+  ymax = NA_real_,
+  comp = "si"
+)
+
+cmsc_e2(
   x,
   y,
   rescale = FALSE,

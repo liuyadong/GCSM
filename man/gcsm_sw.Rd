@@ -2,11 +2,39 @@
 % Please edit documentation in R/RcppExports.R
 \name{cmsc_sw}
 \alias{cmsc_sw}
+\alias{cmsc_e1_sw}
+\alias{cmsc_e2_sw}
 \alias{gcsm_sw}
 \alias{ssim_sw}
 \title{Composite similarity on spatial windows}
 \usage{
 cmsc_sw(
+  x,
+  y,
+  rescale = FALSE,
+  xmin = NA_real_,
+  xmax = NA_real_,
+  ymin = NA_real_,
+  ymax = NA_real_,
+  ksize = 9,
+  globe = FALSE,
+  comp = "si"
+)
+
+cmsc_e1_sw(
+  x,
+  y,
+  rescale = FALSE,
+  xmin = NA_real_,
+  xmax = NA_real_,
+  ymin = NA_real_,
+  ymax = NA_real_,
+  ksize = 9,
+  globe = FALSE,
+  comp = "si"
+)
+
+cmsc_e2_sw(
   x,
   y,
   rescale = FALSE,

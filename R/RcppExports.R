@@ -19,6 +19,42 @@ cmsc_tw <- function(xxx, yyy, rescale = FALSE, xmin = NA_real_, xmax = NA_real_,
     .Call(`_GCSM_cmsc_tw`, xxx, yyy, rescale, xmin, xmax, ymin, ymax, comp)
 }
 
+#' @rdname gcsm
+#' @export
+cmsc_e1 <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin = NA_real_, ymax = NA_real_, comp = "si") {
+    .Call(`_GCSM_cmsc_e1`, x, y, rescale, xmin, xmax, ymin, ymax, comp)
+}
+
+#' @rdname gcsm_sw
+#' @export
+cmsc_e1_sw <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin = NA_real_, ymax = NA_real_, ksize = 9, globe = FALSE, comp = "si") {
+    .Call(`_GCSM_cmsc_e1_sw`, x, y, rescale, xmin, xmax, ymin, ymax, ksize, globe, comp)
+}
+
+#' @rdname gcsm_tw
+#' @export
+cmsc_e1_tw <- function(xxx, yyy, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin = NA_real_, ymax = NA_real_, comp = "si") {
+    .Call(`_GCSM_cmsc_e1_tw`, xxx, yyy, rescale, xmin, xmax, ymin, ymax, comp)
+}
+
+#' @rdname gcsm
+#' @export
+cmsc_e2 <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin = NA_real_, ymax = NA_real_, comp = "si") {
+    .Call(`_GCSM_cmsc_e2`, x, y, rescale, xmin, xmax, ymin, ymax, comp)
+}
+
+#' @rdname gcsm_sw
+#' @export
+cmsc_e2_sw <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin = NA_real_, ymax = NA_real_, ksize = 9, globe = FALSE, comp = "si") {
+    .Call(`_GCSM_cmsc_e2_sw`, x, y, rescale, xmin, xmax, ymin, ymax, ksize, globe, comp)
+}
+
+#' @rdname gcsm_tw
+#' @export
+cmsc_e2_tw <- function(xxx, yyy, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin = NA_real_, ymax = NA_real_, comp = "si") {
+    .Call(`_GCSM_cmsc_e2_tw`, xxx, yyy, rescale, xmin, xmax, ymin, ymax, comp)
+}
+
 #' Composite similarity between vectors
 #'
 #' Compute composite measures, GCSM or CMSC, between two vectors.

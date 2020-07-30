@@ -2,10 +2,34 @@
 % Please edit documentation in R/RcppExports.R
 \name{cmsc_tw}
 \alias{cmsc_tw}
+\alias{cmsc_e1_tw}
+\alias{cmsc_e2_tw}
 \alias{gcsm_tw}
 \title{Composite similarity on temporal windows}
 \usage{
 cmsc_tw(
+  xxx,
+  yyy,
+  rescale = FALSE,
+  xmin = NA_real_,
+  xmax = NA_real_,
+  ymin = NA_real_,
+  ymax = NA_real_,
+  comp = "si"
+)
+
+cmsc_e1_tw(
+  xxx,
+  yyy,
+  rescale = FALSE,
+  xmin = NA_real_,
+  xmax = NA_real_,
+  ymin = NA_real_,
+  ymax = NA_real_,
+  comp = "si"
+)
+
+cmsc_e2_tw(
   xxx,
   yyy,
   rescale = FALSE,
