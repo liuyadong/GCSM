@@ -58,11 +58,11 @@ gcsm_tw(
 
 \item{rescale}{Rescale or not before computation.}
 
-\item{xmin, xmax, ymin, ymax}{Rescale parameters.
-If \code{NA_real_}, will set as global minimum and maximum in \code{xxx} and \code{yyy}, respectively.}
+\item{xmin, xmax, ymin, ymax}{Normalization parameters. If \code{NA}, are calculated
+from the ranges of \code{xxx} and \code{yyy}, respectively.}
 
-\item{comp}{Variable to return.
-If \code{"si"}, the composite measure, if \code{"s1"},\code{"s2"} or \code{"s3"}, the corresponding component.}
+\item{comp}{Variable to return. If \code{"si"}, the composite measure, if
+\code{"s1"},\code{"s2"} or \code{"s3"}, the corresponding component.}
 }
 \value{
 A matrix.
@@ -70,10 +70,16 @@ A matrix.
 \description{
 Compute composite measures, GCSM or CMSC, on temporal windows.
 }
+\note{
+Normalization parameters are used to rescale \code{x} and \code{y}, and
+determine the global minimum (min) and maximum (max). If \code{rescale} is
+\code{TRUE}, \code{x} and \code{y} are rescaled to \code{(x-xmin)/(xmax-xmin)} and
+\code{(y-ymin)/(ymax-ymin)}; and set \code{min=0}, \code{max=1}. If \code{FALSE},
+\code{min=min(xmin,ymin)}, \code{max=max(xmax,ymax)}.
+}
 \examples{
 x = array(runif(81), dim = c(3, 3, 9))
 
 gcsm_tw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 cmsc_tw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-
 }

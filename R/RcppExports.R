@@ -61,12 +61,16 @@ cmsc_e2_tw <- function(xxx, yyy, rescale = FALSE, xmin = NA_real_, xmax = NA_rea
 #' @param x A vector.
 #' @param y The other vector.
 #' @param rescale Rescale or not before computation.
-#' @param xmin,xmax,ymin,ymax Rescale parameters.
-#' If `NA_real_`, will set as global minimum and maximum in `x` and `y`, respectively.
-#' @param comp Variable to return.
-#' If `"si"`, the composite measure, if `"s1"`,`"s2"` or `"s3"`, the corresponding component.
+#' @param xmin,xmax,ymin,ymax Normalization parameters. If `NA`, are calculated
+#'   from the ranges of `x` and `y`, respectively.
+#' @param comp Variable to return. If `"si"`, the composite measure, if
+#'   `"s1"`,`"s2"` or `"s3"`, the corresponding component.
 #' @return A number.
-#' @export
+#' @note Normalization parameters are used to rescale `x` and `y`, and
+#'   determine the global minimum (min) and maximum (max). If `rescale` is
+#'   `TRUE`, `x` and `y` are rescaled to `(x-xmin)/(xmax-xmin)` and
+#'   `(y-ymin)/(ymax-ymin)`; and set `min=0`, `max=1`. If `FALSE`,
+#'   `min=min(xmin,ymin)`, `max=max(xmax,ymax)`.
 #' @examples
 #' # mean shift
 #' x = runif(9)
@@ -90,7 +94,7 @@ cmsc_e2_tw <- function(xxx, yyy, rescale = FALSE, xmin = NA_real_, xmax = NA_rea
 #' cmsc(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 #' ## dissimilarity
 #' gcsm(y, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#'
+#' @export
 gcsm <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin = NA_real_, ymax = NA_real_, comp = "si") {
     .Call(`_GCSM_gcsm`, x, y, rescale, xmin, xmax, ymin, ymax, comp)
 }
@@ -101,22 +105,26 @@ gcsm <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin =
 #' @param x A vector.
 #' @param y The other vector.
 #' @param rescale Rescale or not before computation.
-#' @param xmin,xmax,ymin,ymax Rescale parameters.
-#' If `NA_real_`, will set as global minimum and maximum in `x` and `y`, respectively.
+#' @param xmin,xmax,ymin,ymax Normalization parameters. If `NA`, are calculated
+#'   from the ranges of `x` and `y`, respectively.
 #' @param ksize Side length of spatial windows.
-#' @param globe Are data at the global scale?
-#' If `TRUE`, two vertical borders will be padded before computation.
-#' @param comp Variable to return.
-#' If `"si"`, the composite measure, if `"s1"`,`"s2"` or `"s3"`, the corresponding component.
+#' @param globe Are data at the global scale? If `TRUE`, two vertical borders
+#'   will be padded before computation.
+#' @param comp Variable to return. If `"si"`, the composite measure, if
+#'   `"s1"`,`"s2"` or `"s3"`, the corresponding component.
 #' @return A matrix.
-#' @export
+#' @note Normalization parameters are used to rescale `x` and `y`, and
+#'   determine the global minimum (min) and maximum (max). If `rescale` is
+#'   `TRUE`, `x` and `y` are rescaled to `(x-xmin)/(xmax-xmin)` and
+#'   `(y-ymin)/(ymax-ymin)`; and set `min=0`, `max=1`. If `FALSE`,
+#'   `min=min(xmin,ymin)`, `max=max(xmax,ymax)`.
 #' @examples
 #' x = matrix(runif(36), nrow = 6, ncol = 6)
 #'
 #' gcsm_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 #' cmsc_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 #' ssim_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
-#'
+#' @export
 gcsm_sw <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin = NA_real_, ymax = NA_real_, ksize = 9, globe = FALSE, comp = "si") {
     .Call(`_GCSM_gcsm_sw`, x, y, rescale, xmin, xmax, ymin, ymax, ksize, globe, comp)
 }
@@ -127,18 +135,22 @@ gcsm_sw <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymi
 #' @param xxx A 3-d array with the 3rd dimension representing time.
 #' @param yyy The other 3-d array.
 #' @param rescale Rescale or not before computation.
-#' @param xmin,xmax,ymin,ymax Rescale parameters.
-#' If `NA_real_`, will set as global minimum and maximum in `xxx` and `yyy`, respectively.
-#' @param comp Variable to return.
-#' If `"si"`, the composite measure, if `"s1"`,`"s2"` or `"s3"`, the corresponding component.
+#' @param xmin,xmax,ymin,ymax Normalization parameters. If `NA`, are calculated
+#'   from the ranges of `xxx` and `yyy`, respectively.
+#' @param comp Variable to return. If `"si"`, the composite measure, if
+#'   `"s1"`,`"s2"` or `"s3"`, the corresponding component.
 #' @return A matrix.
-#' @export
+#' @note Normalization parameters are used to rescale `x` and `y`, and
+#'   determine the global minimum (min) and maximum (max). If `rescale` is
+#'   `TRUE`, `x` and `y` are rescaled to `(x-xmin)/(xmax-xmin)` and
+#'   `(y-ymin)/(ymax-ymin)`; and set `min=0`, `max=1`. If `FALSE`,
+#'   `min=min(xmin,ymin)`, `max=max(xmax,ymax)`.
 #' @examples
 #' x = array(runif(81), dim = c(3, 3, 9))
 #'
 #' gcsm_tw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 #' cmsc_tw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#'
+#' @export
 gcsm_tw <- function(xxx, yyy, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin = NA_real_, ymax = NA_real_, comp = "si") {
     .Call(`_GCSM_gcsm_tw`, xxx, yyy, rescale, xmin, xmax, ymin, ymax, comp)
 }

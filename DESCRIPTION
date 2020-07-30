@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-1283-3451"))
 Description: Implements the generic composite similarity measure
     (GCSM), descripted in "A generic composite measure of similarity
-    between geospatial variables" by Yadong Liu,, Kwang Soo Kim, Robert M.
+    between geospatial variables" by Yadong Liu, Kwang Soo Kim, Robert M.
     Beresford and David H. Fleisherd (2020) <doi:>. Also provides
     implements of other composite measures, SSIM and CMSC.
 License: MIT + file LICENSE

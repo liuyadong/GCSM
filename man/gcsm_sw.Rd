@@ -81,16 +81,16 @@ ssim_sw(
 
 \item{rescale}{Rescale or not before computation.}
 
-\item{xmin, xmax, ymin, ymax}{Rescale parameters.
-If \code{NA_real_}, will set as global minimum and maximum in \code{x} and \code{y}, respectively.}
+\item{xmin, xmax, ymin, ymax}{Normalization parameters. If \code{NA}, are calculated
+from the ranges of \code{x} and \code{y}, respectively.}
 
 \item{ksize}{Side length of spatial windows.}
 
-\item{globe}{Are data at the global scale?
-If \code{TRUE}, two vertical borders will be padded before computation.}
+\item{globe}{Are data at the global scale? If \code{TRUE}, two vertical borders
+will be padded before computation.}
 
-\item{comp}{Variable to return.
-If \code{"si"}, the composite measure, if \code{"s1"},\code{"s2"} or \code{"s3"}, the corresponding component.}
+\item{comp}{Variable to return. If \code{"si"}, the composite measure, if
+\code{"s1"},\code{"s2"} or \code{"s3"}, the corresponding component.}
 
 \item{sigma}{Standard deviation of Gaussian weighting function
 depending on the distance between the cell and kernel center.}
@@ -101,11 +101,17 @@ A matrix.
 \description{
 Compute composite measures, GCSM, CMSC or SSIM, on spatial windows.
 }
+\note{
+Normalization parameters are used to rescale \code{x} and \code{y}, and
+determine the global minimum (min) and maximum (max). If \code{rescale} is
+\code{TRUE}, \code{x} and \code{y} are rescaled to \code{(x-xmin)/(xmax-xmin)} and
+\code{(y-ymin)/(ymax-ymin)}; and set \code{min=0}, \code{max=1}. If \code{FALSE},
+\code{min=min(xmin,ymin)}, \code{max=max(xmax,ymax)}.
+}
 \examples{
 x = matrix(runif(36), nrow = 6, ncol = 6)
 
 gcsm_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 cmsc_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 ssim_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
-
 }

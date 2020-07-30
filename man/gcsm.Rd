@@ -58,17 +58,24 @@ gcsm(
 
 \item{rescale}{Rescale or not before computation.}
 
-\item{xmin, xmax, ymin, ymax}{Rescale parameters.
-If \code{NA_real_}, will set as global minimum and maximum in \code{x} and \code{y}, respectively.}
+\item{xmin, xmax, ymin, ymax}{Normalization parameters. If \code{NA}, are calculated
+from the ranges of \code{x} and \code{y}, respectively.}
 
-\item{comp}{Variable to return.
-If \code{"si"}, the composite measure, if \code{"s1"},\code{"s2"} or \code{"s3"}, the corresponding component.}
+\item{comp}{Variable to return. If \code{"si"}, the composite measure, if
+\code{"s1"},\code{"s2"} or \code{"s3"}, the corresponding component.}
 }
 \value{
 A number.
 }
 \description{
 Compute composite measures, GCSM or CMSC, between two vectors.
+}
+\note{
+Normalization parameters are used to rescale \code{x} and \code{y}, and
+determine the global minimum (min) and maximum (max). If \code{rescale} is
+\code{TRUE}, \code{x} and \code{y} are rescaled to \code{(x-xmin)/(xmax-xmin)} and
+\code{(y-ymin)/(ymax-ymin)}; and set \code{min=0}, \code{max=1}. If \code{FALSE},
+\code{min=min(xmin,ymin)}, \code{max=max(xmax,ymax)}.
 }
 \examples{
 # mean shift
@@ -93,5 +100,4 @@ gcsm(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 cmsc(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 ## dissimilarity
 gcsm(y, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-
 }
