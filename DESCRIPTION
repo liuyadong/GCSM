@@ -24,3 +24,5 @@ LinkingTo:
     RcppArmadillo
 Imports: 
     Rcpp
+Suggests: 
+    testthat
