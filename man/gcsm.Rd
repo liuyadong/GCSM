@@ -78,24 +78,22 @@ determine the global minimum (min) and maximum (max). If \code{rescale} is
 \code{min=min(xmin,ymin)}, \code{max=max(xmax,ymax)}.
 }
 \examples{
-# mean shift
 x = runif(9)
-y = 1 - x # y is the perfect antianalog of x
-## similarity
 gcsm(x, x)
 cmsc(x, x)
+# mean shift
 gcsm(x, x - 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 cmsc(x, x - 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 gcsm(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 cmsc(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 ## dissimilarity
+y = 1 - x # y is the perfect antianalog of x
 gcsm(y, x)
 gcsm(y, x - 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 gcsm(y, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 
 # random noise
 noise = rnorm(9, mean = 0, sd = 0.2)
-## similarity
 gcsm(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 cmsc(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 ## dissimilarity
