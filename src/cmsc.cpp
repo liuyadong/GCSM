@@ -1,6 +1,8 @@
 #include <RcppArmadillo.h>
 using namespace arma;
 
+//' @rdname gcsm
+//' @export
 // [[Rcpp::export]]
 double cmsc(arma::vec x, arma::vec y, bool rescale = false,
             double xmin = NA_REAL, double xmax = NA_REAL,
@@ -57,6 +59,9 @@ double cmsc(arma::vec x, arma::vec y, bool rescale = false,
   Rcpp::stop("comp should be 'si' or 's1', 's2', 's3'!");
 }
 
+
+//' @rdname gcsm_sw
+//' @export
 // [[Rcpp::export]]
 arma::mat cmsc_sw(arma::mat x, arma::mat y, bool rescale = false,
                   double xmin = NA_REAL, double xmax = NA_REAL,
@@ -152,6 +157,8 @@ arma::mat cmsc_sw(arma::mat x, arma::mat y, bool rescale = false,
 }
 
 
+//' @rdname gcsm_tw
+//' @export
 // [[Rcpp::export]]
 arma::mat cmsc_tw(arma::cube xxx, arma::cube yyy, bool rescale = false,
                   double xmin = NA_REAL, double xmax = NA_REAL,

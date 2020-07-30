@@ -1,6 +1,10 @@
 #include <RcppArmadillo.h>
 using namespace arma;
 
+//' @rdname gcsm_sw
+//' @param sigma Standard deviation of Gaussian weighting function
+//' depending on the distance between the cell and kernel center.
+//' @export
 // [[Rcpp::export]]
 arma::mat ssim_sw(arma::mat x, arma::mat y, bool rescale = false,
                   double xmin = NA_REAL, double xmax = NA_REAL,

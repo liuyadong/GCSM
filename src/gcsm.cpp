@@ -1,6 +1,42 @@
 #include <RcppArmadillo.h>
 using namespace arma;
 
+//' Composite similarity between vectors
+//'
+//' Compute composite measures, GCSM or CMSC, between two vectors.
+//' @param x A vector.
+//' @param y The other vector.
+//' @param rescale Rescale or not before computation.
+//' @param xmin,xmax,ymin,ymax Rescale parameters.
+//' If `NA_real_`, will set as global minimum and maximum in `x` and `y`, respectively.
+//' @param comp Variable to return.
+//' If `"si"`, the composite measure, if `"s1"`,`"s2"` or `"s3"`, the corresponding component.
+//' @return A number.
+//' @export
+//' @examples
+//' # mean shift
+//' x = runif(9)
+//' y = 1 - x # y is the perfect antianalog of x
+//' ## similarity
+//' gcsm(x, x)
+//' cmsc(x, x)
+//' gcsm(x, x - 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+//' cmsc(x, x - 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+//' gcsm(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+//' cmsc(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+//' ## dissimilarity
+//' gcsm(y, x)
+//' gcsm(y, x - 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+//' gcsm(y, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+//'
+//' # random noise
+//' noise = rnorm(9, mean = 0, sd = 0.2)
+//' ## similarity
+//' gcsm(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+//' cmsc(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+//' ## dissimilarity
+//' gcsm(y, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+//'
 // [[Rcpp::export]]
 double gcsm(arma::vec x, arma::vec y, bool rescale = false,
             double xmin = NA_REAL, double xmax = NA_REAL,
@@ -60,6 +96,28 @@ double gcsm(arma::vec x, arma::vec y, bool rescale = false,
 }
 
 
+//' Composite similarity on spatial windows
+//'
+//' Compute composite measures, GCSM, CMSC or SSIM, on spatial windows.
+//' @param x A vector.
+//' @param y The other vector.
+//' @param rescale Rescale or not before computation.
+//' @param xmin,xmax,ymin,ymax Rescale parameters.
+//' If `NA_real_`, will set as global minimum and maximum in `x` and `y`, respectively.
+//' @param ksize Side length of spatial windows.
+//' @param globe Are data at the global scale?
+//' If `TRUE`, two vertical borders will be padded before computation.
+//' @param comp Variable to return.
+//' If `"si"`, the composite measure, if `"s1"`,`"s2"` or `"s3"`, the corresponding component.
+//' @return A matrix.
+//' @export
+//' @examples
+//' x = matrix(runif(36), nrow = 6, ncol = 6)
+//'
+//' gcsm_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
+//' cmsc_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
+//' ssim_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
+//'
 // [[Rcpp::export]]
 arma::mat gcsm_sw(arma::mat x, arma::mat y, bool rescale = false,
                   double xmin = NA_REAL, double xmax = NA_REAL,
@@ -157,6 +215,24 @@ arma::mat gcsm_sw(arma::mat x, arma::mat y, bool rescale = false,
 }
 
 
+//' Composite similarity on temporal windows
+//'
+//' Compute composite measures, GCSM or CMSC, on temporal windows.
+//' @param xxx A 3-d array with the 3rd dimension representing time.
+//' @param yyy The other 3-d array.
+//' @param rescale Rescale or not before computation.
+//' @param xmin,xmax,ymin,ymax Rescale parameters.
+//' If `NA_real_`, will set as global minimum and maximum in `xxx` and `yyy`, respectively.
+//' @param comp Variable to return.
+//' If `"si"`, the composite measure, if `"s1"`,`"s2"` or `"s3"`, the corresponding component.
+//' @return A matrix.
+//' @export
+//' @examples
+//' x = array(runif(81), dim = c(3, 3, 9))
+//'
+//' gcsm_tw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+//' cmsc_tw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+//'
 // [[Rcpp::export]]
 arma::mat gcsm_tw(arma::cube xxx, arma::cube yyy, bool rescale = false,
                   double xmin = NA_REAL, double xmax = NA_REAL,
