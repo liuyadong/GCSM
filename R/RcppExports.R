@@ -25,3 +25,7 @@ gcsm_tw <- function(xxx, yyy, rescale = FALSE, xmin = NA_real_, xmax = NA_real_,
     .Call(`_GCSM_gcsm_tw`, xxx, yyy, rescale, xmin, xmax, ymin, ymax, comp)
 }
 
+ssim_sw <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin = NA_real_, ymax = NA_real_, ksize = 11, sigma = 1.5, globe = FALSE, comp = "si") {
+    .Call(`_GCSM_ssim_sw`, x, y, rescale, xmin, xmax, ymin, ymax, ksize, sigma, globe, comp)
+}
+

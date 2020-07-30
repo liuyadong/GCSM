@@ -118,6 +118,27 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// ssim_sw
+arma::mat ssim_sw(arma::mat x, arma::mat y, bool rescale, double xmin, double xmax, double ymin, double ymax, double ksize, double sigma, bool globe, std::string comp);
+RcppExport SEXP _GCSM_ssim_sw(SEXP xSEXP, SEXP ySEXP, SEXP rescaleSEXP, SEXP xminSEXP, SEXP xmaxSEXP, SEXP yminSEXP, SEXP ymaxSEXP, SEXP ksizeSEXP, SEXP sigmaSEXP, SEXP globeSEXP, SEXP compSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type y(ySEXP);
+    Rcpp::traits::input_parameter< bool >::type rescale(rescaleSEXP);
+    Rcpp::traits::input_parameter< double >::type xmin(xminSEXP);
+    Rcpp::traits::input_parameter< double >::type xmax(xmaxSEXP);
+    Rcpp::traits::input_parameter< double >::type ymin(yminSEXP);
+    Rcpp::traits::input_parameter< double >::type ymax(ymaxSEXP);
+    Rcpp::traits::input_parameter< double >::type ksize(ksizeSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< bool >::type globe(globeSEXP);
+    Rcpp::traits::input_parameter< std::string >::type comp(compSEXP);
+    rcpp_result_gen = Rcpp::wrap(ssim_sw(x, y, rescale, xmin, xmax, ymin, ymax, ksize, sigma, globe, comp));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_GCSM_cmsc", (DL_FUNC) &_GCSM_cmsc, 8},
@@ -126,6 +147,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_GCSM_gcsm", (DL_FUNC) &_GCSM_gcsm, 8},
     {"_GCSM_gcsm_sw", (DL_FUNC) &_GCSM_gcsm_sw, 10},
     {"_GCSM_gcsm_tw", (DL_FUNC) &_GCSM_gcsm_tw, 8},
+    {"_GCSM_ssim_sw", (DL_FUNC) &_GCSM_ssim_sw, 11},
     {NULL, NULL, 0}
 };
 
