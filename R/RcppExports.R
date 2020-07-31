@@ -58,19 +58,21 @@ cmsc_e2_tw <- function(xxx, yyy, rescale = FALSE, xmin = NA_real_, xmax = NA_rea
 #' Composite similarity between vectors
 #'
 #' Compute composite measures, GCSM or CMSC, between two vectors.
+#'
+#' These functions compute composite measures between vectors. Missing values
+#' are omitted. Normalization parameters are used to rescale `x` and `y`, and
+#' determine the global minimum (min) and maximum (max). If `rescale` is
+#' `TRUE`, `x` and `y` are rescaled to `(x-xmin)/(xmax-xmin)` and
+#' `(y-ymin)/(ymax-ymin)`; and set `min=0`, `max=1`. If `FALSE`,
+#' `min=min(xmin,ymin)`, `max=max(xmax,ymax)`.
 #' @param x A vector.
 #' @param y The other vector.
 #' @param rescale Rescale or not before computation.
 #' @param xmin,xmax,ymin,ymax Normalization parameters. If `NA`, are calculated
-#'   from the ranges of `x` and `y`, respectively.
+#'   from the ranges of `x` and `y`, respectively. See Details.
 #' @param comp Variable to return. If `"si"`, the composite measure, if
 #'   `"s1"`,`"s2"` or `"s3"`, the corresponding component.
 #' @return A number.
-#' @note Normalization parameters are used to rescale `x` and `y`, and
-#'   determine the global minimum (min) and maximum (max). If `rescale` is
-#'   `TRUE`, `x` and `y` are rescaled to `(x-xmin)/(xmax-xmin)` and
-#'   `(y-ymin)/(ymax-ymin)`; and set `min=0`, `max=1`. If `FALSE`,
-#'   `min=min(xmin,ymin)`, `max=max(xmax,ymax)`.
 #' @examples
 #' x = runif(9)
 #' gcsm(x, x)
@@ -100,22 +102,25 @@ gcsm <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin =
 #' Composite similarity on spatial windows
 #'
 #' Compute composite measures, GCSM, CMSC or SSIM, on spatial windows.
+#'
+#' These functions slide the spatial window over space. Missing values are
+#' omitted. Normalization parameters are used to rescale `x` and `y`, and
+#' determine the global minimum (min) and maximum (max). If `rescale` is
+#' `TRUE`, `x` and `y` are rescaled to `(x-xmin)/(xmax-xmin)` and
+#' `(y-ymin)/(ymax-ymin)`; and set `min=0`, `max=1`. If `FALSE`,
+#' `min=min(xmin,ymin)`, `max=max(xmax,ymax)`. OpenMP is used for parallel
+#' computing.
 #' @param x A vector.
 #' @param y The other vector.
 #' @param rescale Rescale or not before computation.
 #' @param xmin,xmax,ymin,ymax Normalization parameters. If `NA`, are calculated
-#'   from the ranges of `x` and `y`, respectively.
+#'   from the ranges of `x` and `y`, respectively. See Details.
 #' @param ksize Side length of spatial windows.
 #' @param globe Are data at the global scale? If `TRUE`, two vertical borders
 #'   will be padded before computation.
 #' @param comp Variable to return. If `"si"`, the composite measure, if
 #'   `"s1"`,`"s2"` or `"s3"`, the corresponding component.
 #' @return A matrix.
-#' @note Normalization parameters are used to rescale `x` and `y`, and
-#'   determine the global minimum (min) and maximum (max). If `rescale` is
-#'   `TRUE`, `x` and `y` are rescaled to `(x-xmin)/(xmax-xmin)` and
-#'   `(y-ymin)/(ymax-ymin)`; and set `min=0`, `max=1`. If `FALSE`,
-#'   `min=min(xmin,ymin)`, `max=max(xmax,ymax)`.
 #' @examples
 #' x = matrix(runif(36), nrow = 6, ncol = 6)
 #'
@@ -130,19 +135,22 @@ gcsm_sw <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymi
 #' Composite similarity on temporal windows
 #'
 #' Compute composite measures, GCSM or CMSC, on temporal windows.
+#'
+#' These functions slide the temporal window over space. Missing values are
+#' omitted. Normalization parameters are used to rescale `xxx` and `yyy`, and
+#' determine the global minimum (min) and maximum (max). If `rescale` is
+#' `TRUE`, `xxx` and `yyy` are rescaled to `(xxx-xmin)/(xmax-xmin)` and
+#' `(yyy-ymin)/(ymax-ymin)`; and set `min=0`, `max=1`. If `FALSE`,
+#' `min=min(xmin,ymin)`, `max=max(xmax,ymax)`. OpenMP is used for parallel
+#' computing.
 #' @param xxx A 3-d array with the 3rd dimension representing time.
 #' @param yyy The other 3-d array.
 #' @param rescale Rescale or not before computation.
 #' @param xmin,xmax,ymin,ymax Normalization parameters. If `NA`, are calculated
-#'   from the ranges of `xxx` and `yyy`, respectively.
+#'   from the ranges of `xxx` and `yyy`, respectively. See Details.
 #' @param comp Variable to return. If `"si"`, the composite measure, if
 #'   `"s1"`,`"s2"` or `"s3"`, the corresponding component.
 #' @return A matrix.
-#' @note Normalization parameters are used to rescale `x` and `y`, and
-#'   determine the global minimum (min) and maximum (max). If `rescale` is
-#'   `TRUE`, `x` and `y` are rescaled to `(x-xmin)/(xmax-xmin)` and
-#'   `(y-ymin)/(ymax-ymin)`; and set `min=0`, `max=1`. If `FALSE`,
-#'   `min=min(xmin,ymin)`, `max=max(xmax,ymax)`.
 #' @examples
 #' x = array(runif(81), dim = c(3, 3, 9))
 #'

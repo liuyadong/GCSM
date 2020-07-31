@@ -59,7 +59,7 @@ gcsm(
 \item{rescale}{Rescale or not before computation.}
 
 \item{xmin, xmax, ymin, ymax}{Normalization parameters. If \code{NA}, are calculated
-from the ranges of \code{x} and \code{y}, respectively.}
+from the ranges of \code{x} and \code{y}, respectively. See Details.}
 
 \item{comp}{Variable to return. If \code{"si"}, the composite measure, if
 \code{"s1"},\code{"s2"} or \code{"s3"}, the corresponding component.}
@@ -70,8 +70,9 @@ A number.
 \description{
 Compute composite measures, GCSM or CMSC, between two vectors.
 }
-\note{
-Normalization parameters are used to rescale \code{x} and \code{y}, and
+\details{
+These functions compute composite measures between vectors. Missing values
+are omitted. Normalization parameters are used to rescale \code{x} and \code{y}, and
 determine the global minimum (min) and maximum (max). If \code{rescale} is
 \code{TRUE}, \code{x} and \code{y} are rescaled to \code{(x-xmin)/(xmax-xmin)} and
 \code{(y-ymin)/(ymax-ymin)}; and set \code{min=0}, \code{max=1}. If \code{FALSE},

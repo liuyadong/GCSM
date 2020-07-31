@@ -82,7 +82,7 @@ ssim_sw(
 \item{rescale}{Rescale or not before computation.}
 
 \item{xmin, xmax, ymin, ymax}{Normalization parameters. If \code{NA}, are calculated
-from the ranges of \code{x} and \code{y}, respectively.}
+from the ranges of \code{x} and \code{y}, respectively. See Details.}
 
 \item{ksize}{Side length of spatial windows.}
 
@@ -101,12 +101,14 @@ A matrix.
 \description{
 Compute composite measures, GCSM, CMSC or SSIM, on spatial windows.
 }
-\note{
-Normalization parameters are used to rescale \code{x} and \code{y}, and
+\details{
+These functions slide the spatial window over space. Missing values are
+omitted. Normalization parameters are used to rescale \code{x} and \code{y}, and
 determine the global minimum (min) and maximum (max). If \code{rescale} is
 \code{TRUE}, \code{x} and \code{y} are rescaled to \code{(x-xmin)/(xmax-xmin)} and
 \code{(y-ymin)/(ymax-ymin)}; and set \code{min=0}, \code{max=1}. If \code{FALSE},
-\code{min=min(xmin,ymin)}, \code{max=max(xmax,ymax)}.
+\code{min=min(xmin,ymin)}, \code{max=max(xmax,ymax)}. OpenMP is used for parallel
+computing.
 }
 \examples{
 x = matrix(runif(36), nrow = 6, ncol = 6)

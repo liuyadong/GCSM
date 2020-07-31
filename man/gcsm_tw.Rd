@@ -59,7 +59,7 @@ gcsm_tw(
 \item{rescale}{Rescale or not before computation.}
 
 \item{xmin, xmax, ymin, ymax}{Normalization parameters. If \code{NA}, are calculated
-from the ranges of \code{xxx} and \code{yyy}, respectively.}
+from the ranges of \code{xxx} and \code{yyy}, respectively. See Details.}
 
 \item{comp}{Variable to return. If \code{"si"}, the composite measure, if
 \code{"s1"},\code{"s2"} or \code{"s3"}, the corresponding component.}
@@ -70,12 +70,14 @@ A matrix.
 \description{
 Compute composite measures, GCSM or CMSC, on temporal windows.
 }
-\note{
-Normalization parameters are used to rescale \code{x} and \code{y}, and
+\details{
+These functions slide the temporal window over space. Missing values are
+omitted. Normalization parameters are used to rescale \code{xxx} and \code{yyy}, and
 determine the global minimum (min) and maximum (max). If \code{rescale} is
-\code{TRUE}, \code{x} and \code{y} are rescaled to \code{(x-xmin)/(xmax-xmin)} and
-\code{(y-ymin)/(ymax-ymin)}; and set \code{min=0}, \code{max=1}. If \code{FALSE},
-\code{min=min(xmin,ymin)}, \code{max=max(xmax,ymax)}.
+\code{TRUE}, \code{xxx} and \code{yyy} are rescaled to \code{(xxx-xmin)/(xmax-xmin)} and
+\code{(yyy-ymin)/(ymax-ymin)}; and set \code{min=0}, \code{max=1}. If \code{FALSE},
+\code{min=min(xmin,ymin)}, \code{max=max(xmax,ymax)}. OpenMP is used for parallel
+computing.
 }
 \examples{
 x = array(runif(81), dim = c(3, 3, 9))
