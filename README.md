@@ -3,13 +3,13 @@
 
 The goal of GCSM is to implement the generic composite similarity
 measure (GCSM), described in “A generic composite measure of similarity
-between geospatial variables” by Yadong Liu; Kwang Soo Kim; Robert M.
-Beresford & David H. Fleisherd (2020) \<doi:\>. This package also
-provides implements of SSIM and CMSC. Functions are given to compute
-composite similarity between vectors (e.g, `gcsm`), on spatial windows
-(e.g., `gcsm_sw`) or temporal windows (e.g., `gcsm_tw`). They are
-implemented in C++ with RcppArmadillo. OpenMP is used for parallel
-computing.
+between geospatial variables” by Liu et al. (2020)
+[doi:10.1016/j.ecoinf.2020.101169](https://doi.org/10.1016/j.ecoinf.2020.101169).
+This package also provides implements of SSIM and CMSC. Functions are
+given to compute composite similarity between vectors (e.g, `gcsm`), on
+spatial windows (e.g., `gcsm_sw`) or temporal windows (e.g., `gcsm_tw`).
+They are implemented in C++ with RcppArmadillo. OpenMP is used for
+parallel computing.
 
 ## Installation
 
@@ -54,12 +54,12 @@ gcsm(y, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 # random noise
 noise = rnorm(9, mean = 0, sd = 0.1)
 gcsm(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] 0.8818897
+#> [1] 0.8538475
 cmsc(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] 0.9133118
+#> [1] 0.9205917
 ## dissimilariry
 gcsm(y, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] -0.8818897
+#> [1] -0.8538475
 ```
 
 Composite similarity on spatial windows:
@@ -84,12 +84,12 @@ cmsc_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 #> [6,] 0.96 0.96 0.96 0.96 0.96 0.96
 ssim_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 #>           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]
-#> [1,] 0.9653245 0.9581226 0.9613667 0.9549535 0.9506626 0.9267525
-#> [2,] 0.9612058 0.9542769 0.9577407 0.9507264 0.9440892 0.9164550
-#> [3,] 0.9630422 0.9523943 0.9486896 0.9356041 0.9171448 0.8548775
-#> [4,] 0.9550886 0.9419848 0.9255051 0.9342918 0.9352458 0.9297958
-#> [5,] 0.9585404 0.9555988 0.9325064 0.9418028 0.9260284 0.9325685
-#> [6,] 0.9542370 0.9613688 0.9415169 0.9524514 0.9310586 0.9473202
+#> [1,] 0.9330725 0.9543268 0.9580800 0.9531022 0.9464806 0.9553984
+#> [2,] 0.9301401 0.9414081 0.9372444 0.9455836 0.9492206 0.9603127
+#> [3,] 0.9481841 0.9332954 0.8836522 0.9105995 0.9308114 0.9485747
+#> [4,] 0.9561241 0.9353591 0.8877687 0.8985309 0.9210743 0.9317091
+#> [5,] 0.9691957 0.9609796 0.9540076 0.9455161 0.9402787 0.9241170
+#> [6,] 0.9709043 0.9684239 0.9720521 0.9685025 0.9622086 0.9443346
 ```
 
 Composite similarity on temporal windows:
