@@ -8,8 +8,9 @@ between geospatial variables” by Liu et al. (2020)
 This package also provides implements of SSIM and CMSC. Functions are
 given to compute composite similarity between vectors (e.g, `gcsm`), on
 spatial windows (e.g., `gcsm_sw`) or temporal windows (e.g., `gcsm_tw`).
-They are implemented in C++ with RcppArmadillo. OpenMP is used for
-parallel computing.
+They are implemented in C++ with
+[RcppArmadillo](https://github.com/RcppCore/RcppArmadillo). OpenMP is
+used for parallel computing.
 
 ## Installation
 
@@ -54,12 +55,12 @@ gcsm(y, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 # random noise
 noise = rnorm(9, mean = 0, sd = 0.1)
 gcsm(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] 0.8538475
+#> [1] 0.8320781
 cmsc(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] 0.9205917
+#> [1] 0.9014253
 ## dissimilariry
 gcsm(y, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] -0.8538475
+#> [1] -0.8320781
 ```
 
 Composite similarity on spatial windows:
@@ -84,12 +85,12 @@ cmsc_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 #> [6,] 0.96 0.96 0.96 0.96 0.96 0.96
 ssim_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 #>           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]
-#> [1,] 0.9330725 0.9543268 0.9580800 0.9531022 0.9464806 0.9553984
-#> [2,] 0.9301401 0.9414081 0.9372444 0.9455836 0.9492206 0.9603127
-#> [3,] 0.9481841 0.9332954 0.8836522 0.9105995 0.9308114 0.9485747
-#> [4,] 0.9561241 0.9353591 0.8877687 0.8985309 0.9210743 0.9317091
-#> [5,] 0.9691957 0.9609796 0.9540076 0.9455161 0.9402787 0.9241170
-#> [6,] 0.9709043 0.9684239 0.9720521 0.9685025 0.9622086 0.9443346
+#> [1,] 0.9598027 0.9554981 0.9414164 0.9051556 0.9381126 0.9581013
+#> [2,] 0.9612400 0.9502093 0.9404996 0.9378249 0.9513824 0.9540864
+#> [3,] 0.9486808 0.9259066 0.9161810 0.9470607 0.9580740 0.9556207
+#> [4,] 0.9563071 0.9357359 0.9293909 0.9481971 0.9581873 0.9525351
+#> [5,] 0.9605745 0.9532348 0.9445640 0.9421224 0.9409076 0.9364858
+#> [6,] 0.9709259 0.9676898 0.9619197 0.9497676 0.9279447 0.9016685
 ```
 
 Composite similarity on temporal windows:

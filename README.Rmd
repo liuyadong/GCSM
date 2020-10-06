@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 
 # GCSM
 
-The goal of GCSM is to implement the generic composite similarity measure (GCSM), described in "A generic composite measure of similarity between geospatial variables" by Liu et al. (2020) [doi:10.1016/j.ecoinf.2020.101169](https://doi.org/10.1016/j.ecoinf.2020.101169). This package also provides implements of SSIM and CMSC. Functions are given to compute composite similarity between vectors (e.g, `gcsm`), on spatial windows (e.g., `gcsm_sw`) or temporal windows (e.g., `gcsm_tw`). They are implemented in C++ with RcppArmadillo. OpenMP is used for parallel computing.
+The goal of GCSM is to implement the generic composite similarity measure (GCSM), described in "A generic composite measure of similarity between geospatial variables" by Liu et al. (2020) [doi:10.1016/j.ecoinf.2020.101169](https://doi.org/10.1016/j.ecoinf.2020.101169). This package also provides implements of SSIM and CMSC. Functions are given to compute composite similarity between vectors (e.g, `gcsm`), on spatial windows (e.g., `gcsm_sw`) or temporal windows (e.g., `gcsm_tw`). They are implemented in C++ with [RcppArmadillo](https://github.com/RcppCore/RcppArmadillo). OpenMP is used for parallel computing.
 
 ## Installation
 
