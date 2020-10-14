@@ -1,3 +1,10 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Rewrote the start of description.
+
+* Provided full names of all acronyms in the description.
+
 ## Test environments
 * local R installation, R 4.0.2
 * macOS 10.15.7 (on github actions), R 4.0.2
