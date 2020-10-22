@@ -1,9 +1,7 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Rewrote the start of description.
-
-* Provided full names of all acronyms in the description.
+* Added single quotes to the package name RcppArmadillo in description.
 
 ## Test environments
 * local R installation, R 4.0.2
