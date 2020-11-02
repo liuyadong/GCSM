@@ -4,6 +4,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/liuyadong/GCSM/workflows/R-CMD-check/badge.svg)](https://github.com/liuyadong/GCSM/actions)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/GCSM)](https://CRAN.R-project.org/package=GCSM)
 <!-- badges: end -->
 
 The goal of GCSM is to implement the generic composite similarity
@@ -66,12 +68,12 @@ gcsm(y, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 # random noise
 noise = rnorm(9, mean = 0, sd = 0.1)
 gcsm(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] 0.8897559
+#> [1] 0.7719099
 cmsc(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] 0.9343575
+#> [1] 0.9427791
 ## dissimilariry
 gcsm(y, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] -0.8897559
+#> [1] -0.7719099
 ```
 
 Composite similarity on spatial windows:
@@ -96,12 +98,12 @@ cmsc_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 #> [6,] 0.96 0.96 0.96 0.96 0.96 0.96
 ssim_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 #>           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]
-#> [1,] 0.9175712 0.9100422 0.8961625 0.9493718 0.9603352 0.9672205
-#> [2,] 0.9337187 0.9210430 0.8816175 0.9333139 0.9436170 0.9545060
-#> [3,] 0.9523075 0.9402990 0.9179069 0.9327686 0.9231006 0.9139099
-#> [4,] 0.9532904 0.9484003 0.9479293 0.9533212 0.9356022 0.9017036
-#> [5,] 0.9059504 0.9120740 0.9468424 0.9586003 0.9539784 0.9307388
-#> [6,] 0.7597572 0.8207329 0.9241325 0.9523249 0.9585352 0.9501642
+#> [1,] 0.9411454 0.9214168 0.9169390 0.9461954 0.9712785 0.9777024
+#> [2,] 0.9625560 0.9545538 0.9517716 0.9632256 0.9717116 0.9736731
+#> [3,] 0.9703725 0.9675556 0.9610270 0.9679905 0.9633441 0.9609509
+#> [4,] 0.9688934 0.9684905 0.9655600 0.9679028 0.9587779 0.9518538
+#> [5,] 0.9538236 0.9484908 0.9404195 0.9511968 0.9568499 0.9606823
+#> [6,] 0.9476272 0.9330108 0.9286503 0.9456641 0.9650384 0.9701094
 ```
 
 Composite similarity on temporal windows:
