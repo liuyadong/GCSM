@@ -110,8 +110,8 @@ gcsm <- function(x, y, rescale = FALSE, xmin = NA_real_, xmax = NA_real_, ymin =
 #' `(y-ymin)/(ymax-ymin)`; and set `min=0`, `max=1`. If `FALSE`,
 #' `min=min(xmin,ymin)`, `max=max(xmax,ymax)`. OpenMP is used for parallel
 #' computing.
-#' @param x A vector.
-#' @param y The other vector.
+#' @param x A matrix.
+#' @param y The other matrix.
 #' @param rescale Rescale or not before computation.
 #' @param xmin,xmax,ymin,ymax Normalization parameters. If `NA`, are calculated
 #'   from the ranges of `x` and `y`, respectively. See Details.

@@ -75,9 +75,9 @@ ssim_sw(
 )
 }
 \arguments{
-\item{x}{A vector.}
+\item{x}{A matrix.}
 
-\item{y}{The other vector.}
+\item{y}{The other matrix.}
 
 \item{rescale}{Rescale or not before computation.}
 

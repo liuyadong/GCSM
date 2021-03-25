@@ -1,5 +1,7 @@
 # GCSM (development version)
 
+* Updated document for `*_sw` functions.
+
 # GCSM 0.1.0
 
 * Initial release.
