@@ -1,4 +1,8 @@
-This submission updates the document for `*_sw` functions.
+## Resubmission
+
+This is a resubmission. In this version I have:
+
+* Eliminated the NOTE about LazyData by deleting the LazyData option in description.
 
 ## Test environments
 * local R installation, R 4.0.4
