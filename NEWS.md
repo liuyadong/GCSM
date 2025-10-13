@@ -1,4 +1,4 @@
-# GCSM (development version)
+# GCSM 0.1.2
 
 # GCSM 0.1.1
 
