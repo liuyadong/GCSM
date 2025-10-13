@@ -2,18 +2,15 @@
 
 This is a resubmission. In this version I have:
 
-* Eliminated the NOTE about LazyData by deleting the LazyData option in description.
+* Dropped C++11 specification since RcppArmadillo requires at least C++14.
 
 ## Test environments
-* local R installation, R 4.0.4
-* macOS 10.15.7 (on github actions), R 4.0.4
-* ubuntu 20.04.2 (on github actions), R-devel, R 4.0.4
-* Microsoft Windows Server 2019 10.0.17763 (on github actions), R 4.0.4
+* macOS 14.5, R 4.5.1
 * win-builder (devel)
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 3 notes
 
 ## revdepcheck results
 

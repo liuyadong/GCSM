@@ -6,6 +6,7 @@
 [![R-CMD-check](https://github.com/liuyadong/GCSM/workflows/R-CMD-check/badge.svg)](https://github.com/liuyadong/GCSM/actions)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/GCSM)](https://CRAN.R-project.org/package=GCSM)
+[![R-CMD-check](https://github.com/liuyadong/GCSM/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/liuyadong/GCSM/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of GCSM is to implement the generic composite similarity
@@ -68,12 +69,12 @@ gcsm(y, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 # random noise
 noise = rnorm(9, mean = 0, sd = 0.1)
 gcsm(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] 0.7719099
+#> [1] 0.8693062
 cmsc(x, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] 0.9427791
+#> [1] 0.923067
 ## dissimilariry
 gcsm(y, x + noise, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
-#> [1] -0.7719099
+#> [1] -0.8693062
 ```
 
 Composite similarity on spatial windows:
@@ -98,12 +99,12 @@ cmsc_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 #> [6,] 0.96 0.96 0.96 0.96 0.96 0.96
 ssim_sw(x, x + 0.2, xmin = 0, xmax = 1, ymin = 0, ymax = 1, ksize = 3)
 #>           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]
-#> [1,] 0.9411454 0.9214168 0.9169390 0.9461954 0.9712785 0.9777024
-#> [2,] 0.9625560 0.9545538 0.9517716 0.9632256 0.9717116 0.9736731
-#> [3,] 0.9703725 0.9675556 0.9610270 0.9679905 0.9633441 0.9609509
-#> [4,] 0.9688934 0.9684905 0.9655600 0.9679028 0.9587779 0.9518538
-#> [5,] 0.9538236 0.9484908 0.9404195 0.9511968 0.9568499 0.9606823
-#> [6,] 0.9476272 0.9330108 0.9286503 0.9456641 0.9650384 0.9701094
+#> [1,] 0.9566836 0.9594427 0.9477761 0.9431469 0.9556182 0.9705777
+#> [2,] 0.9600186 0.9608446 0.9489242 0.9448564 0.9514205 0.9646547
+#> [3,] 0.9444104 0.9524642 0.9482018 0.9484446 0.9371045 0.9419915
+#> [4,] 0.9075694 0.9295222 0.9379967 0.9425617 0.9293695 0.9275795
+#> [5,] 0.8817980 0.9240333 0.9429186 0.9465245 0.9361364 0.9356249
+#> [6,] 0.9133686 0.9368088 0.9482247 0.9480949 0.9468311 0.9515087
 ```
 
 Composite similarity on temporal windows:
