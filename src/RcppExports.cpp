@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // cmsc
 double cmsc(arma::vec x, arma::vec y, bool rescale, double xmin, double xmax, double ymin, double ymax, std::string comp);
 RcppExport SEXP _GCSM_cmsc(SEXP xSEXP, SEXP ySEXP, SEXP rescaleSEXP, SEXP xminSEXP, SEXP xmaxSEXP, SEXP yminSEXP, SEXP ymaxSEXP, SEXP compSEXP) {
