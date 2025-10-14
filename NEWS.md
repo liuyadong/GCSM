@@ -1,8 +1,4 @@
-# GCSM 0.1.3
-
-* Drop C++11 specification.
-
-# GCSM 0.1.2
+# GCSM 0.2.0
 
 * Drop C++11 specification.
 
