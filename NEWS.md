@@ -1,3 +1,5 @@
+# GCSM (development version)
+
 # GCSM 0.2.0
 
 * Drop C++11 specification.
